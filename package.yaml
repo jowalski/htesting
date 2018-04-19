@@ -1,0 +1,58 @@
+name:                htesting
+version:             0.1.0.0
+github:              "jowalski/htesting"
+license:             BSD3
+author:              "John Kowalski"
+maintainer:          "jowalski@gmail.com"
+copyright:           "Copyright (c) 2018 John Kowalski"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/jowalski/htesting#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- QuickCheck >= 2.10.1
+- generic-random >= 1.0.2
+- test-invariant >= 0.4.5.0
+- quickcheck-instances >= 0.3.18
+- base64-string
+- bytestring
+- streaming-bytestring
+- sandi >= 0.4.2
+- regex-pcre
+- containers
+
+library:
+  source-dirs: src
+
+executables:
+  htesting-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - htesting
+
+tests:
+  htesting-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - htesting
